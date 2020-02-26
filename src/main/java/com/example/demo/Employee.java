@@ -12,7 +12,8 @@ public class Employee {
     private String name;
     private String age;
 
-    @ManyToOne//(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
+//    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id")
     private Company company;
 

@@ -10,9 +10,8 @@ public class Company {
     private long id;
     private String name;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
-    public Set<Employee> employees;
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)//cascade = CascadeType.ALL,
+    private Set<Employee> employees;
 
     public long getId() {
         return id;

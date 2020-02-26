@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,11 +18,16 @@
     <ul>
         <th:block th:each="employee : ${company.employees}">
             <li th:inline="text"><b>[[${employee.jobTitle}]]</b> released in
-                [[${employee.jobDescription}]].</li>
+                [[${employee.age}]].</li>
         </th:block>
     </ul>
 </div>
 
+<div th:each="employee : ${employees}">
+<a th:href="@{/update/{id}(id=${employee.id})}">Update</a>
+<a th:href="@{/detail/{id}(id=${employee.id})}">Details</a>
+<a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
+</div>
 <!--<div th:each="team: ${teams}">-->
 <!--<h4 th:text="${team.teamname}"></h4>-->
 <!--<ul th:each="player: ${team.players}">-->

@@ -5,13 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/processEmployee}" th:object="${employee}" method="post">
+
+<form action="#" th:action="@{/processEmployee}" th:object="${employee}" method="post">
     <input type="hidden" th:field="*{id}">
-    Name: <input type="text" placeholder="name" th:field="*{name}">
+    Name: <input type="text" placeholder="name" th:field="*{name}" />
     <br>
+    Age: <input type="text" placeholder="age" th:field="*{age}" />
+    <br>
+    Title: <input type="text" placeholder="title" th:field="*{jobTitle}" />
 
     <select th:field="*{company}">
-        <div th:each="team: ${companies}">
+        <div th:each="company: ${companies}">
             <option th:value="${company.id}" th:text="${company.name}"></option>
 
         </div>
@@ -20,5 +24,6 @@
 
     <input type="submit" value="Submit">
 </form>
+
 </body>
 </html>

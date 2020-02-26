@@ -36,7 +36,7 @@ public class HomeController {
     public String addEmployee(Model model) {
         model.addAttribute("companies", companyRepository.findAll());
         model.addAttribute("employee", new Employee());
-        return "companyform";
+        return "employeeform";
     }
 
     @PostMapping("/processEmployee")
@@ -54,11 +54,12 @@ public class HomeController {
     @RequestMapping("/update/{id}")
     public String updateEmployee(@PathVariable("id") long id, Model model) {
         model.addAttribute("employee", employeeRepository.findById(id).get());
+        model.addAttribute("companies", companyRepository.findAll());
         return "employeeform";
     }
 
     @RequestMapping("/delete/{id}")
-    public String udelEmployee(@PathVariable("id") long id) {
+    public String delEmployee(@PathVariable("id") long id) {
         employeeRepository.deleteById(id);
         return "redirect:/";
     }
