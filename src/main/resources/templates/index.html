@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2><a href="/addCompany">Add a company</a></h2>
+<h2><a href="/addEmployee">Add an employee</a></h2>
+<br>
+
+<h1>Company List</h1>
+<div th:each="company : ${companies}">
+    <h2 th:text="${company.name}"></h2>
+<!--    <h6 th:inline="text">specializing in [[${company.}</h6>-->
+
+    <ul>
+        <th:block th:each="employee : ${company.employees}">
+            <li th:inline="text"><b>[[${employee.jobTitle}]]</b> released in
+                [[${employee.jobDescription}]].</li>
+        </th:block>
+    </ul>
+</div>
+
+<!--<div th:each="team: ${teams}">-->
+<!--<h4 th:text="${team.teamname}"></h4>-->
+<!--<ul th:each="player: ${team.players}">-->
+<!--    <li th:text="${player.name}"></li>-->
+<!--</ul>-->
+
+<!--</div>-->
+
+</body>
+</html>
