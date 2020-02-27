@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Search</title>
 </head>
 <body>
-
+<div>
+    <a href="/"><button>Index</button></a>
+    <th:block>
+        <div th:each = "employee : ${employees}">
+            <h1 th:text="${employee.name}"></h1>
+            <p th:text="${employee.id}"></p>
+            <p th:inline="text">The employee works for [[${employee.company.name}]]</p>
+            <p th:inline="text">The employee's title is [[${employee.jobTitle}]]</p>
+            <p th:inline="text">The employee's age is [[${employee.age}]]</p>
+        </div>
+    </th:block>
+</div>
 </body>
 </html>

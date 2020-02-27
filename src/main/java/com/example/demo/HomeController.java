@@ -51,12 +51,19 @@ public class HomeController {
         return "show";
     }
 
-    @RequestMapping("/update/{id}")
+    @RequestMapping("/updateEmployee/{id}")
     public String updateEmployee(@PathVariable("id") long id, Model model) {
         model.addAttribute("employee", employeeRepository.findById(id).get());
         model.addAttribute("companies", companyRepository.findAll());
         return "employeeform";
     }
+
+//    @RequestMapping("/updateCompany/{id}")
+//    public String updateCompany(@PathVariable("id") long id, Model model) {
+////        model.addAttribute("employee", employeeRepository.findById(id).get());
+//        model.addAttribute("company", companyRepository.findById(id).get());
+//        return "companyform";
+//    }
 
     @RequestMapping("/deleteEmployee/{id}")
     public String delEmployee(@PathVariable("id") long id) {

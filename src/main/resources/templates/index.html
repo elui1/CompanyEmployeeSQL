@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+<div>
+    <form th:action="@{/search}" method="post">
+        <input type="text" name="search" placeholder="Enter the search name" required>
+        <input type="submit" value="Search">
+    </form>
+</div>
 
 <h2><a href="/addCompany">Add a company</a></h2>
 <h2><a href="/addEmployee">Add an employee</a></h2>
@@ -13,14 +19,17 @@
 <h1>Company List</h1>
 <div th:each="company : ${companies}">
     <h2 th:text="${company.name}"></h2>
+    <a th:href="@{/updateCompany/{id}(id=${company.id})}">Update</a>
     <a th:href="@{/deleteCompany/{id}(id=${company.id})}">Delete</a>
+
     <ul>
         <th:block th:each="employee : ${company.employees}">
+
             <li th:inline="text">Name:[[${employee.name}]]</li>
             <li th:inline="text">Title:[[${employee.jobTitle}]]</li>
 <!--            <li th:inline="text">Age:[[${employee.jobTitle}]]</li>    [[${employee.age}]].-->
             <div>
-                <a th:href="@{/update/{id}(id=${employee.id})}">Update</a>
+                <a th:href="@{/updateEmployee/{id}(id=${employee.id})}">Update</a>
                 <a th:href="@{/detail/{id}(id=${employee.id})}">Details</a>
                 <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">Delete</a>
             </div>
