@@ -12,9 +12,7 @@ public class Employee {
     private String name;
     private String age;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-//    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "company_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
 
     public long getId() {
