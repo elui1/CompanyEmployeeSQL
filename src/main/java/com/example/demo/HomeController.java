@@ -58,9 +58,22 @@ public class HomeController {
         return "employeeform";
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/deleteEmployee/{id}")
     public String delEmployee(@PathVariable("id") long id) {
         employeeRepository.deleteById(id);
         return "redirect:/";
+    }
+
+    @RequestMapping("/deleteCompany/{id}")
+    public String delCompany(@PathVariable("id") long id) {
+        companyRepository.deleteById(id);
+        employeeRepository.deleteAll();
+        return "redirect:/";
+    }
+
+    @RequestMapping("/search")
+    public String search(@RequestParam("search") String search, Model model) {
+        model.addAttribute("employees", employeeRepository.findByName(search));
+        return "searchlist";
     }
 }

@@ -13,21 +13,26 @@
 <h1>Company List</h1>
 <div th:each="company : ${companies}">
     <h2 th:text="${company.name}"></h2>
-<!--    <h6 th:inline="text">specializing in [[${company.}</h6>-->
-
+    <a th:href="@{/deleteCompany/{id}(id=${company.id})}">Delete</a>
     <ul>
         <th:block th:each="employee : ${company.employees}">
-            <li th:inline="text"><b>[[${employee.jobTitle}]]</b> released in
-                [[${employee.age}]].</li>
+            <li th:inline="text">Name:[[${employee.name}]]</li>
+            <li th:inline="text">Title:[[${employee.jobTitle}]]</li>
+<!--            <li th:inline="text">Age:[[${employee.jobTitle}]]</li>    [[${employee.age}]].-->
+            <div>
+                <a th:href="@{/update/{id}(id=${employee.id})}">Update</a>
+                <a th:href="@{/detail/{id}(id=${employee.id})}">Details</a>
+                <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">Delete</a>
+            </div>
         </th:block>
     </ul>
 </div>
 
-<div th:each="employee : ${employees}">
-<a th:href="@{/update/{id}(id=${employee.id})}">Update</a>
-<a th:href="@{/detail/{id}(id=${employee.id})}">Details</a>
-<a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
-</div>
+<!--<div th:each="employee : ${employees}">-->
+<!--<a th:href="@{/update/{id}(id=${employee.id})}">Update</a>-->
+<!--<a th:href="@{/detail/{id}(id=${employee.id})}">Details</a>-->
+<!--<a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>-->
+<!--</div>-->
 <!--<div th:each="team: ${teams}">-->
 <!--<h4 th:text="${team.teamname}"></h4>-->
 <!--<ul th:each="player: ${team.players}">-->

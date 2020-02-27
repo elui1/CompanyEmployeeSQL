@@ -2,4 +2,9 @@ package com.example.demo;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface EmployeeRepository extends CrudRepository<Employee, Long> {}
+import java.util.ArrayList;
+
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
+
+    public ArrayList<Employee> findByName(String name);
+}
