@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Controller
 public class HomeController {
     @Autowired
@@ -73,6 +76,15 @@ public class HomeController {
 
     @RequestMapping("/deleteCompany/{id}")
     public String delCompany(@PathVariable("id") long id) {
+        Company company = companyRepository.findById(id).get();
+        Set<Employee> employees = company.getEmployees();
+        for(Employee employee : employees){
+            employee.setCompany(null);
+            employeeRepository.save(employee);
+        }
+        employees = new HashSet<>();
+        company.setEmployees(employees);
+        companyRepository.save(company);
         companyRepository.deleteById(id);
         return "redirect:/";
     }
